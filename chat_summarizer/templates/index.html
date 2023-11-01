@@ -1,311 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Summarizer</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-        * {
-            box-sizing: border-box;
-            font-family: 'poppins',sans-serif;
-        }
-        .main {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            background-color: #159ad3;
-            height: 800px;
-            width: 1000px;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 7px 7px 10px 3px #24004628;
-        }
-        
-        .container {
-            margin-left: -30px;
-            display: flex;
-            height: 87%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            padding: 20px 0px;
-
-        }
-        .bg{
-            background-color: #f0f0f0;
-        }
-
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            padding: 30px;
-            height:600px;
-        }
-        .form1 {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            padding: 30px;
-            height:800px;
-        }
-
-        /*checkbox to switch from sign up to login */
-        #chk {
-            display: none;
-        }
-
-        /*Login*/
-        .login {
-            position: relative;
-            width: 100%;
-            height: 150%;
-        }
-
-        .login label {
-            margin: -1% 0 1%;
-        }
-
-        label {
-            color: #fff;
-            font-size: 50px;
-            justify-content: center;
-            display: flex;
-            font-weight: bold;
-            cursor: pointer;
-            transition: .5s ease-in-out;
-        }
-
-        .input {
-            width: 100%;
-            height: 60%;
-            background: #fff;
-            border: none;
-            outline: none;
-            border-radius: 4px;
-            resize: none;
-            
-        }
-
-        /*Register*/
-        .register {
-            background: #ddedf4;
-            border-radius: 70% / 8%;
-            transform: translateY(12%);
-            transition: .8s ease-in-out;
-            height: 1000px;
-        }
-
-        .register label {
-            color: #212221;
-            transform: scale(.6);
-            margin: 0% 0 5%;
-        }
-
-        #chk:checked ~ .register {
-            transform: translateY(-60%);
-        }
-
-        #chk:checked ~ .register label {
-            transform: scale(1);
-            margin: 1% 0 5%;
-        }
-
-        #chk:checked ~ .login label {
-            transform: scale(.6);
-            margin: 3% 0 10%;
-        }
-        
-        #chk:checked ~ .form button{
-            transform: scale(.6);
-            margin: 3% 0 10%;
-        }
-        .fortranslateSummary{
-            transform: translateY(-62%);
-        }
-
-
-        /*FOR SUMMARIZED Button*/
-        .form button {
-            width: 50%;
-            height: 65px;
-            margin: 12px auto -14%;
-            color: #fff;
-            background: #573b8a;
-            font-size: 25px;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: .2s ease-in;
-        }
-
-        .form button:hover {
-            background-color: #44449b;
-        }
-        /*Button*/
-        .form1 button {
-            width: 50%;
-            height: 65px;
-            margin: 45px auto -14%;
-            color: #fff;
-            background: #573b8a;
-            font-size: 25px;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: .2s ease-in;
-        }
-
-        .form1 button:hover {
-            background-color: #6d44b8;
-        }
-        .form1 {
-        text-align: center;
-        }
-
-        .rectangle {
-            width: 50%;
-            height: 65px;
-            margin: 45px auto -14%;
-            color: #fff;
-            background: #44449b;
-            font-size: 25px;
-            font-weight: bold;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: .2s ease-in;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .rectangle:hover {
-            background-color: #5d5dd8;
-        }
-        .translated {
-            transform: translateY(-60%);
-        }
-
-        .register label {
-            transition: transform 0.3s ease, margin 0.3s ease;
-        }
-
-        .label-transformed {
-            transform: scale(1);
-            margin: 1% 0 5%;
-        }
-        /*
-        For Nav BAR */
-        nav{   
-            background: #212221;
-            border-radius: 50px;
-            border-radius: 0px;
-            margin-top: -16px;
-            margin-left: -10px;
-            margin-right: -8px;
-            padding: 2px 0px 10.5px 0;
-            box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
-            height: 19%; 
-        }
-        nav ul img {
-        float: left;
-        padding-top: 0px;
-        width: 300px; 
-        height: 80px;
-        }
-
-        nav ul li a {
-            font-size: 28px;
-            font-weight: 500;
-            color: #159ad3;
-            text-decoration: none;
-            padding-top: 50px;
-        }
-
-        nav ul li{
-            list-style: none;
-            display: inline-block;
-            padding: 13px;
-            margin: 10px;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            transition: color 0.5s;
-            padding-top: 10px;
-        }
-
-        nav ul li a::after{
-            content: '';
-            background: #159ad3;
-            color: #ddedf4;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            position: absolute;
-            top: 68%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            opacity: 0;
-            transition: top 0.5s, opacity 0.5s;
-        }
-
-        nav ul li a:hover{
-            color: #fff;
-        }
-
-        nav ul li a:hover::after{
-            top: 50%;
-            opacity: 1;
-        }
-        /*NAV BAR END */
-   
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
-    <body class="bg">
-        <header>
-        </header>
-        <nav>
-            <ul>
-                <img src="{{ url_for('static', filename='img/news_logo.jpg') }}" alt="Default News Pic">
-                <li><a href="/news_feed/1">News</a></li>
-                <li><a href="/home">Summarizer</a></li>
-            </ul>
-        </nav>
+<body class="bg">
+    <nav>
+        <ul>
+            <img src="{{ url_for('static', filename='img/news_logo.jpg') }}" alt="Default News Pic">
+            <li><a href="/news_feed/1">News</a></li>
+            <li><a href="/home">Summarizer</a></li>
+        </ul>
+    </nav>
 
-        
-
-        <div class="container">
-            <div class="main">  	
-                <input type="checkbox" id="chk" aria-hidden="true">
-                    <div class="login">
-                        <form class="form">
-                            <label for="chk" aria-hidden="true" style="color: #212221;">Text Summarizer</label>
-                            <textarea id="input-text" class="input" style=" height: 500%;" placeholder="Enter your text here..."></textarea>
-                            <div class="form1">
-                                <div  class="rectangle">
-                                    <label for="chk" aria-hidden="true" onclick="summarize()" style="font-size: 30px; height: 100%; width: 100%; padding-top: 12px;">Summarize</label>
-                                </div>
+    <div class="container">
+        <div class="main">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+                <div class="login">
+                    <form class="form">
+                        <label for="chk" aria-hidden="true" style="color: #212221;">Text Summarizer</label>
+                        <textarea id="input-text" class="input" style=" height: 500%;" placeholder="Enter your text here..."></textarea>
+                        <div class="form1">
+                            <div  class="rectangle">
+                                <label for="chk" aria-hidden="true" onclick="summarize()" style="font-size: 30px; height: 100%; width: 100%; padding-top: 12px;">Summarize</label>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+                </div>
 
             <div class="register">
-                        <form class="form1">
-                            <label for="chk" aria-hidden="true">Summary</label>
-                            <textarea id="output-text" class="input" style="height: 250px;" placeholder="Your summary will appear here..." readonly></textarea>
-                            <div class="form1">
-                                <div  class="rectangle">
-                                    <label for="chk" aria-hidden="true" style="font-size: 30px; height: 100%; width: 100%; padding-top: 18px; color: #fff;">Go Back</label>
-                                </div>
-                            </div>
-                        </form>
+                <form class="form1">
+                    <label for="chk" aria-hidden="true">Summary</label>
+                    <textarea id="output-text" class="input" style="height: 250px;" placeholder="Your summary will appear here..." readonly></textarea>
+                    <div class="form1">
+                        <div  class="rectangle">
+                            <label for="chk" aria-hidden="true" style="font-size: 30px; height: 100%; width: 100%; padding-top: 18px; color: #fff;">Go Back</label>
+                        </div>
                     </div>
+                </form>
             </div>
         </div>
+    </div>
     <script>
         function summarize() 
         {
@@ -334,5 +71,5 @@
             xhr.send(JSON.stringify(input_text));
         }
     </script>
-    </body>
+</body>
 </html>

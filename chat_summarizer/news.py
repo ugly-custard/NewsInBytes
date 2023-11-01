@@ -2,11 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-#json error code
-#error code:0 -> no error
-#error code:1 -> some error
-
-
 def get_url():
     to_get="https://www.bbc.com/news/topics/c2vdnvdg6xxt"
     pre_url="https://www.bbc.com"
@@ -19,9 +14,6 @@ def get_url():
         url=pre_url+str(link['href'])
         urls.append(url)
     return urls
-
-
-
 
 def news_content():
     urls=get_url()
@@ -41,11 +33,11 @@ def news_content():
             if title and content != "":
                 error_code=0
                 unsummarized_news={
-                'title':f'{title}',
-                'content':f'{content}',
-                'url':f'{url}',
-                'img_url':f'{img_url}',
-                'error_code':f'{error_code}'
+                    'title':f'{title}',
+                    'content':f'{content}',
+                    'url':f'{url}',
+                    'img_url':f'{img_url}',
+                    'error_code':f'{error_code}'
                 }
                 data.append(unsummarized_news)
         
@@ -56,9 +48,6 @@ def news_content():
 
 data=news_content()
 
-with open('unsummarized_news3.json', 'w') as fp:
+with open('unsummarized_news.json', 'w') as fp:
     for data in data:
         json.dump(data, fp)
-
-        
-

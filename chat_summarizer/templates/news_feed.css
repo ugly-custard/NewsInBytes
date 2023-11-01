@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+
+nav{   
+    background: #212221;
+    border-radius: 50px;
+    border-radius: 0px;
+    margin-top: -16px;
+    margin-left: -10px;
+    margin-right: -8px;
+    padding: 2px 0px 8.5px 0;
+    box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.4);
+    height: 13.805%; 
+}
+nav ul img {
+float: left;
+padding-top: 0px;
+width: 300px; 
+height: 80px;
+}
+
+nav ul li a {
+    font-size: 28px;
+    font-weight: 500;
+    color: #159ad3;
+    text-decoration: none;
+    padding-top: 50px;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 13px;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s;
+    padding-top: 10px;
+}
+
+nav ul li a::after{
+    content: '';
+    background: #159ad3;
+    color: #ddedf4;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    z-index: -1;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+}
+
+nav ul li a:hover{
+    color: #fff;
+}
+
+nav ul li a:hover::after{
+    top: 50%;
+    opacity: 1;
+}
+img1{
+    width: 40%;
+    height: 40%;
+}
+/* CSS for the News container */
+.News {
+    text-align: center;
+    border-bottom: 2px solid #ddd; /* Adjust border properties as needed */
+    padding: 20px;
+}
+
+/* CSS for the headline */
+.Headlines h1 {
+    font-size: 30px;
+    color: #159ad3;
+}
+
+/* CSS for the content */
+.Content {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* CSS for the images */
+.images {
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.images img{
+    max-height: 100%;
+    max-width: 100%;
+}
+.navbutton-container {
+    margin-top: 20px;
+}
+
+/* CSS for the buttons */
+.navbutton {
+    display: inline-block;
+    background-color: #159ad3; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px; /* Adjust the margin as needed */
+    cursor: pointer;
+    border-radius: 12px;
+    width: 120px; /* Adjust the width as needed */
+}
+.center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -0%);
+    transform: translate(-50%, 35%);
+}
